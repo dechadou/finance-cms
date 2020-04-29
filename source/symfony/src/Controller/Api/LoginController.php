@@ -131,9 +131,9 @@ class LoginController extends AbstractController
         $token = bin2hex(random_bytes(32));
 
 
-        $mailCanonical = $this->transformer->transform($email);
+        $mailCanonical = $email;
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'emailCanonical' => $mailCanonical
+            'email' => $mailCanonical
         ]);
 
         if (!$user) {
@@ -149,7 +149,7 @@ class LoginController extends AbstractController
                 throw new UnprocessableEntityHttpException($e->getMessage());
             }
 
-            $this->mailHelper->sendEmail($token, $email, $request);
+            //$this->mailHelper->sendEmail($token, $email, $request);
 
             return true;
         }

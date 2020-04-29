@@ -55,6 +55,11 @@ class User implements UserInterface, \Serializable
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $passwordRequestToken;
+
     /*
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Labs\Customer", inversedBy="users")
@@ -234,6 +239,22 @@ class User implements UserInterface, \Serializable
         $this->email = $email;
 
         return $this;
+    }
+
+    /**
+     * @param mixed $passwordRequestToken
+     */
+    public function setPasswordRequestToken($passwordRequestToken)
+    {
+        $this->passwordRequestToken = $passwordRequestToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordRequestToken()
+    {
+        return $this->passwordRequestToken;
     }
 
 }

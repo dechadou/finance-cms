@@ -28,14 +28,6 @@ class NewPasswordType extends AbstractType
                     ],
                 ]
             )
-            ->add('slug', TextType::class,
-                [
-                    'constraints' => [
-                        new NotBlank()
-                    ],
-                    'mapped' => false
-                ]
-            )
         ;
     }
 

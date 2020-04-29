@@ -28,12 +28,6 @@ class PasswordRequestType extends AbstractType
                     ]
                 ]
             )
-            ->add('url', TextType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank()
-                ]
-            ])
         ;
     }
 
