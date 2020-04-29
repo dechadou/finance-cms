@@ -1,0 +1,95 @@
+sonata_admin:
+    title: false
+    title_logo: assets/logo.png
+    show_mosaic_button: false
+    security:
+        handler: sonata.admin.security.handler.role
+    templates:
+        user_block: 'admin/user_block.html.twig'
+        layout: 'admin/standard_layout.html.twig'
+    dashboard:
+        groups:
+            admin.group.general:
+                label: General
+                items:
+                    - admin.user
+                    - admin.startup
+                roles: [ ROLE_ROOT ]
+            admin.group.configuration:
+                label: Configuracion
+                items:
+                    - admin.types
+                    - admin.documentos
+                    - admin.verticales
+                    - admin.founders
+                    - admin.inversores
+                roles: [ ROLE_ROOT ]
+
+services:
+    admin.user:
+        class: App\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Global, label: Usuarios}
+        arguments: [ ~, App\Entity\User, ~]
+
+    admin.types:
+        class: App\Admin\TypeAdmin
+        arguments: [~, App\Entity\Type, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }
+        public: true
+
+    admin.documentos:
+        class: App\Admin\DocumentoAdmin
+        arguments: [~, App\Entity\Documento, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Documentos }
+        public: true
+
+    admin.status:
+        class: App\Admin\StatusAdmin
+        arguments: [~, App\Entity\Status, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Status }
+        public: true
+
+    admin.verticales:
+        class: App\Admin\VerticalAdmin
+        arguments: [~, App\Entity\Vertical, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Verticales }
+        public: true
+
+    admin.founders:
+        class: App\Admin\FounderAdmin
+        arguments: [~, App\Entity\Founder, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Founders }
+        public: true
+
+    admin.inversores:
+        class: App\Admin\InversorAdmin
+        arguments: [~, App\Entity\Inversor, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Inversores }
+        public: true
+
+    admin.basic:
+        class: App\Admin\BasicAdmin
+        arguments: [~, App\Entity\Basic, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Basic }
+        public: true
+
+    admin.startup:
+        class: App\Admin\StartupAdmin
+        arguments: [~, App\Entity\Startup, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Startups }
+        public: true
+
+
+    admin.base.abstract:
+        class: App\Admin\BaseAbstractAdmin
+        calls:
+            - [setTokenStorage, ['@security.token_storage']]
