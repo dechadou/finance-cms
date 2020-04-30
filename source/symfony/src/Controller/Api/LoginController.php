@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 
+use App\Entity\LoginLog;
 use App\Entity\User;
 use App\Form\Type\NewPasswordType;
 use App\Form\Type\PasswordRequestType;
@@ -60,7 +61,6 @@ class LoginController extends AbstractController
      * @param JWTService $JWTService
      * @param MailHelper $mailHelper
      * @param PhpHashTransformer $transformer
-
      */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder, JWTService $JWTService, MailHelper $mailHelper, PhpHashTransformer $transformer)
     {
@@ -104,9 +104,22 @@ class LoginController extends AbstractController
         $jwt = $this->JWTService->encode($user->getId());
 
 
+        $this->saveLog($user);
+
+
         return [
             'access_token' => $jwt
         ];
+    }
+
+    public function saveLog(User $user)
+    {
+        if ($user) {
+            $log = new LoginLog();
+            $log->setUser($user);
+            $this->getDoctrine()->getManager()->persist($log);
+            $this->getDoctrine()->getManager()->flush();
+        }
     }
 
 
@@ -175,7 +188,7 @@ class LoginController extends AbstractController
 
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['passwordRequestToken' => $token]);
 
-        if ( !$user ) {
+        if (!$user) {
             throw new AccessDeniedHttpException('invalid token');
         }
 
