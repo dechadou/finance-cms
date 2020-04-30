@@ -67,9 +67,9 @@ final class FounderAdmin extends BaseAbstractAdmin
             ->add('genero',ChoiceType::class,
                 [
                     'choices' => [
-                        'Peso Argentino' => 'ars',
-                        'Dollar' => 'usd',
-                        'Euro' => 'euro',
+                        'Masculino' => 'masculino',
+                        'Femenino' => 'femenino',
+                        'Otro' => 'otro',
                     ],
                 ]
             )
