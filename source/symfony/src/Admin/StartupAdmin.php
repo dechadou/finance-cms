@@ -67,12 +67,12 @@ final class StartupAdmin extends BaseAbstractAdmin
                     'required' => false,
                 ]
             )
-            ->add('founders', CollectionType::class, ['by_reference' => true], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
+            ->add('founders', CollectionType::class, ['by_reference' => true,'label' => 'Fundadores'], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
             ->add('verticales')
             ->add('description')
             ->add('one_pager')
             ->add('website')
-            ->add('fecha_constitucion', DateTimePickerType::class, ['empty_data' => '-'])
+            ->add('fecha_constitucion', DateTimePickerType::class, ['required' => false,'empty_data' => '-'])
             ->add('cierre_ejercicio')
             ->add('fondice')
             ->end()

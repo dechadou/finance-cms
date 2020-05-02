@@ -26,8 +26,7 @@ final class BasicAdmin extends AbstractAdmin
             ->add('reformas_estatuto', null, ['label' => 'Link a Reformas de Estatuto'])
             ->add('estatuto', null, ['label' => 'Link a estatuto'])
             ->add('valuacion')
-            ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial'])
-            ;
+            ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial']);
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -59,15 +58,13 @@ final class BasicAdmin extends AbstractAdmin
             ->add('batch', null, ['attr' => ["style" => "width:40%"]])
             ->add('empleados', null, ['label' => 'Cantidad de empleados'])
             ->add('valuacion')
-            ->add('inversorStartups', \Sonata\Form\Type\CollectionType::class, ['by_reference' => true], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
+            ->add('inversorStartups', \Sonata\Form\Type\CollectionType::class, ['by_reference' => true, 'label' => 'Inversores', 'required' => false], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
             ->add('invertido_gridx')
             ->add('invertido_gridx_follow', null, ['label' => 'Follow on'])
             ->add('total_invertido_gridx')
             ->add('estatuto', null, ['label' => 'Link a estatuto'])
             ->add('reformas_estatuto', null, ['label' => 'Link a Reformas de Estatuto'])
-            ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial'])
-
-            ;
+            ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial']);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -84,8 +81,7 @@ final class BasicAdmin extends AbstractAdmin
             ->add('valuacion')
             ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial'])
             ->add('createdAt')
-            ->add('updatedAt')
-            ;
+            ->add('updatedAt');
     }
 
 

@@ -20,6 +20,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class StartupController extends AbstractController
 {
     const IMG_URL = 'http://phpstack-401769-1264820.cloudwaysapps.com/uploads/';
+
+    public function getImage($object)
+    {
+        if($object != ''){
+            return self::IMG_URL.$object;
+        }
+        return null;
+    }
+
     public function getDocumentos($startup)
     {
         $documentos = [];
@@ -60,7 +69,7 @@ class StartupController extends AbstractController
                 'id' => $inversor->getInversor()->getId(),
                 'name' => $inversor->getInversor()->getName(),
                 'porcentaje_participacion' => $inversor->getPorcentajeParticipacion(),
-                'logo' => self::IMG_URL.$inversor->getInversor()->getLogo(),
+                'logo' => $this->getImage($inversor->getInversor()->getLogo()),
                 'website' => $inversor->getInversor()->getWebsite()
             ];
         }
@@ -77,7 +86,8 @@ class StartupController extends AbstractController
         ];
     }
 
-    public function getFounders($startup){
+    public function getFounders($startup)
+    {
         $founders = [];
         foreach ($startup->getFounders() as $founder) {
             $founders[] = [
@@ -86,16 +96,17 @@ class StartupController extends AbstractController
                 'linkedin' => $founder->getLinkedin(),
                 'email' => $founder->getEmail(),
                 'genero' => $founder->getGenero(),
-                'phd' => (boolean) $founder->getPHD(),
-                'conicet' => (boolean) $founder->getConicet()
+                'phd' => (boolean)$founder->getPHD(),
+                'conicet' => (boolean)$founder->getConicet()
             ];
         }
         return $founders;
     }
 
-    public function getVerticales($startup){
+    public function getVerticales($startup)
+    {
         $verticales = [];
-        foreach($startup->getVerticales() as $vertical){
+        foreach ($startup->getVerticales() as $vertical) {
             $verticales[] = [
                 'id' => $vertical->getId(),
                 'name' => $vertical->getName()
@@ -119,7 +130,7 @@ class StartupController extends AbstractController
             $result[] = [
                 'id' => $startup->getId(),
                 'name' => $startup->getName(),
-                'logo' => self::IMG_URL.$startup->getLogo(),
+                'logo' => $this->getImage($startup->getLogo()),
                 'description' => $startup->getDescription(),
                 'one_pager' => $startup->getOnePager(),
                 'website' => $startup->getWebsite(),
@@ -145,7 +156,7 @@ class StartupController extends AbstractController
     public function showAction($id)
     {
         $startup = $this->getDoctrine()->getRepository(Startup::class)->findOneById($id);
-        if(!$startup){
+        if (!$startup) {
             return [];
         }
         return [
