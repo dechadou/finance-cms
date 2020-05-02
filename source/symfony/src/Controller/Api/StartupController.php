@@ -23,8 +23,10 @@ class StartupController extends AbstractController
 
     public function getImage($object)
     {
-        if($object != ''){
-            return self::IMG_URL.$object;
+        if ($object) {
+            if ($object->getProviderReference() != '') {
+                return self::IMG_URL . $object->getProviderReference();
+            }
         }
         return null;
     }
@@ -69,7 +71,7 @@ class StartupController extends AbstractController
                 'id' => $inversor->getInversor()->getId(),
                 'name' => $inversor->getInversor()->getName(),
                 'porcentaje_participacion' => $inversor->getPorcentajeParticipacion(),
-                'logo' => $this->getImage($inversor->getInversor()->getLogo()->getProviderReference()),
+                'logo' => $this->getImage($inversor->getInversor()->getLogo()),
                 'website' => $inversor->getInversor()->getWebsite()
             ];
         }
@@ -130,7 +132,7 @@ class StartupController extends AbstractController
             $result[] = [
                 'id' => $startup->getId(),
                 'name' => $startup->getName(),
-                'logo' => $this->getImage($startup->getLogo()->getProviderReference()),
+                'logo' => $this->getImage($startup->getLogo()),
                 'description' => $startup->getDescription(),
                 'one_pager' => $startup->getOnePager(),
                 'website' => $startup->getWebsite(),
