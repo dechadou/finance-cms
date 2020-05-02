@@ -57,9 +57,9 @@ final class FounderAdmin extends BaseAbstractAdmin
     {
         $formMapper
             ->add('name', null, ['label' => 'Nombre'])
-            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin'])
+            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin', 'empty_data' => ''])
             ->add('email')
-            ->add('genero',ChoiceType::class,
+            ->add('genero', ChoiceType::class,
                 [
                     'choices' => [
                         'Masculino' => 'masculino',
