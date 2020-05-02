@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\Form\Type\DateTimePickerType;
 
 final class DocumentoAdmin extends BaseAbstractAdmin
 {
@@ -35,6 +36,8 @@ final class DocumentoAdmin extends BaseAbstractAdmin
         $formMapper
             ->add('type', null, ['label' => 'Tipo de documento'])
             ->add('name', null, ['label' => 'Nombre del documento'])
+            ->add('source', null, ['label' => 'Fuente'])
+            ->add('date', DateTimePickerType::class, ['label' => 'Fecha de publicacion'])
             ->add('value', null, ['label' => 'Link al documento'])
         ;
     }
