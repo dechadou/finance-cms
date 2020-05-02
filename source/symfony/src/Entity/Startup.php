@@ -153,13 +153,14 @@ class Startup
         return $this;
     }
 
-    public function getFechaConstitucion(): ?\DateTimeInterface
+    public function getFechaConstitucion(): ?string
     {
         return $this->fecha_constitucion;
     }
 
-    public function setFechaConstitucion(\DateTimeInterface $fecha_constitucion): self
+    public function setFechaConstitucion(?string $fecha_constitucion): self
     {
+
         $this->fecha_constitucion = $fecha_constitucion;
 
         return $this;

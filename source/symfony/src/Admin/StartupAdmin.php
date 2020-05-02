@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\Form\Type\CollectionType;
 use Sonata\Form\Type\DateTimePickerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class StartupAdmin extends BaseAbstractAdmin
 {
@@ -28,8 +29,7 @@ final class StartupAdmin extends BaseAbstractAdmin
             ->add('website')
             ->add('fecha_constitucion')
             ->add('cierre_ejercicio')
-            ->add('fondice')
-            ;
+            ->add('fondice');
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -67,12 +67,12 @@ final class StartupAdmin extends BaseAbstractAdmin
                     'required' => false,
                 ]
             )
-            ->add('founders', CollectionType::class, ['by_reference' => true,'label' => 'Fundadores'], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
+            ->add('founders', CollectionType::class, ['by_reference' => true, 'label' => 'Fundadores'], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
             ->add('verticales')
             ->add('description')
             ->add('one_pager')
             ->add('website')
-            ->add('fecha_constitucion', DateTimePickerType::class, ['required' => false,'empty_data' => '-'])
+            ->add('fecha_constitucion', TextType::class, ['required' => false, 'empty_data' => '', 'attr' => ['placeholder' => 'dd/mm/yyyy', 'style' => 'width:30%']])
             ->add('cierre_ejercicio')
             ->add('fondice')
             ->end()

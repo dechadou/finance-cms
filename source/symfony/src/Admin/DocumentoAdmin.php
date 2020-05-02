@@ -37,9 +37,8 @@ final class DocumentoAdmin extends BaseAbstractAdmin
             ->add('type', null, ['label' => 'Tipo de documento'])
             ->add('name', null, ['label' => 'Nombre del documento'])
             ->add('source', null, ['label' => 'Fuente'])
-            ->add('date', DateTimePickerType::class, ['label' => 'Fecha de publicacion'])
-            ->add('value', null, ['label' => 'Link al documento'])
-        ;
+            ->add('date', DateTimePickerType::class, ['label' => 'Fecha de publicacion', 'required' => false])
+            ->add('value', null, ['label' => 'Link al documento']);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -47,7 +46,6 @@ final class DocumentoAdmin extends BaseAbstractAdmin
         $showMapper
             ->add('id')
             ->add('name', null, ['label' => 'Nombre del documento'])
-            ->add('value', null, ['label' => 'Link al documento'])
-            ;
+            ->add('value', null, ['label' => 'Link al documento']);
     }
 }
