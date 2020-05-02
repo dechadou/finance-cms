@@ -68,7 +68,7 @@ class Basic
     private $registro_acciones_inicial;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\InversorStartup", mappedBy="basic", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\InversorStartup", mappedBy="basic", cascade={"persist", "remove"})
      */
     private $inversorStartups;
 

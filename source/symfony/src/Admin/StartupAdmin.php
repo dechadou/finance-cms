@@ -128,7 +128,6 @@ final class StartupAdmin extends BaseAbstractAdmin
         }
     }
 
-
     public function preUpdate($object)
     {
         $this->updateStatus($object);
