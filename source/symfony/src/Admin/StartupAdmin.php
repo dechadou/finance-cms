@@ -128,8 +128,20 @@ final class StartupAdmin extends BaseAbstractAdmin
         }
     }
 
+    public function updateBasic($object)
+    {
+
+        if ($object->getBasic()->getInversorStartups()) {
+            foreach ($object->getBasic()->getInversorStartups() as $iS) {
+                $iS->setBasic($object->getBasic());
+            }
+        }
+    }
+
+
     public function preUpdate($object)
     {
+        $this->updateBasic($object);
         $this->updateStatus($object);
         $this->persistDocumentos($object);
         parent::preUpdate($object);
@@ -138,6 +150,7 @@ final class StartupAdmin extends BaseAbstractAdmin
 
     public function prePersist($object)
     {
+        $this->updateBasic($object);
         $this->updateStatus($object);
         $this->persistDocumentos($object);
         parent::prePersist($object);

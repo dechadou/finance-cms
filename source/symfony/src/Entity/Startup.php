@@ -77,7 +77,6 @@ class Startup
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Basic", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $basic;
 
@@ -332,7 +331,6 @@ class Startup
 
         return $this;
     }
-
 
 
 }
