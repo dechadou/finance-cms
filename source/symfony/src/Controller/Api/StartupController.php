@@ -69,7 +69,7 @@ class StartupController extends AbstractController
                 'id' => $inversor->getInversor()->getId(),
                 'name' => $inversor->getInversor()->getName(),
                 'porcentaje_participacion' => $inversor->getPorcentajeParticipacion(),
-                'logo' => $this->getImage($inversor->getInversor()->getLogo()),
+                'logo' => $this->getImage($inversor->getInversor()->getLogo()->getProviderReference()),
                 'website' => $inversor->getInversor()->getWebsite()
             ];
         }
@@ -130,7 +130,7 @@ class StartupController extends AbstractController
             $result[] = [
                 'id' => $startup->getId(),
                 'name' => $startup->getName(),
-                'logo' => $this->getImage($startup->getLogo()),
+                'logo' => $this->getImage($startup->getLogo()->getProviderReference()),
                 'description' => $startup->getDescription(),
                 'one_pager' => $startup->getOnePager(),
                 'website' => $startup->getWebsite(),
