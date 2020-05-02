@@ -4,11 +4,13 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'es'
     admin_path: 'admin_UV6piOWeU4AidERp'
     jwt_key: '%env(JWT_KEY)%'
 
     mail_from: 'no-reply@elgatoylacaja.com'
+
+
 
 services:
     # default configuration for services in *this* file

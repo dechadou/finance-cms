@@ -26,7 +26,7 @@ class Founder
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkedin;
 
@@ -104,24 +104,24 @@ class Founder
         return $this;
     }
 
-    public function getPHD(): ?string
+    public function getPHD(): ?bool
     {
         return $this->PHD;
     }
 
-    public function setPHD(string $PHD): self
+    public function setPHD(bool $PHD): self
     {
         $this->PHD = $PHD;
 
         return $this;
     }
 
-    public function getCONICET(): ?string
+    public function getCONICET(): ?bool
     {
         return $this->CONICET;
     }
 
-    public function setCONICET(string $CONICET): self
+    public function setCONICET(bool $CONICET): self
     {
         $this->CONICET = $CONICET;
 

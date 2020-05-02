@@ -25,44 +25,39 @@ final class FounderAdmin extends BaseAbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('linkedin')
+            ->add('name', null, ['label' => 'Nombre'])
+            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin'])
             ->add('email')
             ->add('genero')
             ->add('PHD')
-            ->add('CONICET')
-            ->add('createdAt')
-            ->add('updatedAt');
+            ->add('CONICET');
     }
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('linkedin')
+            ->add('name', null, ['label' => 'Nombre'])
+            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin'])
             ->add('email')
             ->add('genero')
             ->add('PHD')
             ->add('CONICET')
-            ->add('createdBy')
-            ->add('updatedBy')
-            ->add('updatedAt', 'datetime')
-            ->add('createdAt', 'datetime')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
+                'label' => 'Accion'
             ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('name')
-            ->add('linkedin')
+            ->add('name', null, ['label' => 'Nombre'])
+            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin'])
             ->add('email')
             ->add('genero',ChoiceType::class,
                 [
@@ -81,8 +76,8 @@ final class FounderAdmin extends BaseAbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('linkedin')
+            ->add('name', null, ['label' => 'Nombre'])
+            ->add('linkedin', null, ['label' => 'Link a perfil de Linkedin'])
             ->add('email')
             ->add('genero')
             ->add('PHD')
@@ -91,3 +86,4 @@ final class FounderAdmin extends BaseAbstractAdmin
             ->add('updatedAt');
     }
 }
+

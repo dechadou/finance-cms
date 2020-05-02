@@ -30,7 +30,8 @@ class Startup
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", fetch="EAGER")
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", nullable=true)
      */
     private $logo;
 
@@ -50,12 +51,12 @@ class Startup
     private $website;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $fecha_constitucion;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cierre_ejercicio;
 
@@ -81,7 +82,7 @@ class Startup
     private $basic;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Founder")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Founder", cascade={"persist"})
      */
     private $founders;
 
@@ -89,6 +90,7 @@ class Startup
      * @ORM\ManyToMany(targetEntity="App\Entity\Vertical")
      */
     private $verticales;
+
 
     public function __construct()
     {
@@ -112,18 +114,6 @@ class Startup
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(?string $logo): self
-    {
-        $this->logo = $logo;
 
         return $this;
     }
@@ -176,12 +166,12 @@ class Startup
         return $this;
     }
 
-    public function getCierreEjercicio(): ?\DateTimeInterface
+    public function getCierreEjercicio(): ?string
     {
         return $this->cierre_ejercicio;
     }
 
-    public function setCierreEjercicio(\DateTimeInterface $cierre_ejercicio): self
+    public function setCierreEjercicio(?string $cierre_ejercicio): self
     {
         $this->cierre_ejercicio = $cierre_ejercicio;
 
@@ -330,4 +320,19 @@ class Startup
     {
         return (string)$this->getName();
     }
+
+    public function getLogo(): ?Media
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?Media $logo): self
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+
+
 }

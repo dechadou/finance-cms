@@ -19,7 +19,6 @@ sonata_admin:
                 label: Configuracion
                 items:
                     - admin.types
-                    - admin.documentos
                     - admin.verticales
                     - admin.founders
                     - admin.inversores
@@ -36,7 +35,7 @@ services:
         class: App\Admin\TypeAdmin
         arguments: [~, App\Entity\Type, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Tipos de Documentos }
         public: true
 
     admin.documentos:
@@ -86,6 +85,13 @@ services:
         arguments: [~, App\Entity\Startup, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Startups }
+        public: true
+
+    admin.inversor_startup:
+        class: App\Admin\InversorStartupAdmin
+        arguments: [~, App\Entity\InversorStartup, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: InversorStartup }
         public: true
 
 

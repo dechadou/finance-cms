@@ -18,34 +18,33 @@ final class StatusAdmin extends BaseAbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('text')
-            ->add('createdAt')
-            ->add('updatedAt');
+            ->add('title', null, ['label' => 'Titulo'])
+            ->add('text', null, ['label' => 'Status']);
     }
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->add('id')
-            ->add('text')
-            ->add('createdBy')
-            ->add('updatedBy')
-            ->add('updatedAt', 'datetime')
-            ->add('createdAt', 'datetime')
+            ->add('title', null, ['label' => 'Titulo'])
+            ->add('text', null, ['label' => 'Status'])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
+                'label' => 'Accion'
             ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('text')
-            ->add('fecha', DateTimePickerType::class);
+            ->add('fecha', DateTimePickerType::class)
+            ->add('title', null, ['label' => 'Titulo'])
+            ->add('text', null, ['label' => 'Status']);
+
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 final class InversorAdmin extends BaseAbstractAdmin
@@ -18,12 +19,9 @@ final class InversorAdmin extends BaseAbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
+            ->add('name', null, ['label' => 'Nombre'])
             ->add('logo')
-            ->add('porcentaje_participacion')
             ->add('website')
-            ->add('createdAt')
-            ->add('updatedAt')
             ;
     }
 
@@ -31,29 +29,30 @@ final class InversorAdmin extends BaseAbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
+            ->add('name', null, ['label' => 'Nombre'])
             ->add('logo')
-            ->add('porcentaje_participacion')
             ->add('website')
-            ->add('createdBy')
-            ->add('updatedBy')
-            ->add('updatedAt', 'datetime')
-            ->add('createdAt', 'datetime')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
+                'label' => 'Accion'
             ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('name')
-            ->add('logo')
-            ->add('porcentaje_participacion')
+            ->add('name', null, ['label' => 'Nombre'])
+            ->add(
+                'logo',
+                ModelType::class,
+                [
+                    'required' => false,
+                ]
+            )
             ->add('website')
             ;
     }
@@ -62,12 +61,9 @@ final class InversorAdmin extends BaseAbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
+            ->add('name', null, ['label' => 'Nombre'])
             ->add('logo')
-            ->add('porcentaje_participacion')
             ->add('website')
-            ->add('createdAt')
-            ->add('updatedAt')
             ;
     }
 }

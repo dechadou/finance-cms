@@ -10,15 +10,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-final class TypeAdmin extends BaseAbstractAdmin
+final class InversorStartupAdmin extends AbstractAdmin
 {
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('id')
-            ->add('name', null, ['label' => 'Nombre del tipo de documento'])
-
+            ->add('porcentaje_participacion')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -32,14 +30,16 @@ final class TypeAdmin extends BaseAbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('name', null, ['label' => 'Nombre del tipo de documento']);
+            ->add('inversor')
+            ->add('porcentaje_participacion')
+            ;
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->add('id')
-            ->add('name', null, ['label' => 'Nombre del tipo de documento'])
+            ->add('inversor')
+            ->add('porcentaje_participacion')
             ;
     }
 }

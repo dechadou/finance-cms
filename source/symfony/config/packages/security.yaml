@@ -1,8 +1,10 @@
 security:
     role_hierarchy:
         ROLE_USER: ROLE_USER
+        USUARIO: ROLE_USER
         ROLE_ADMIN: [ROLE_USER, ROLE_SONATA_ADMIN]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ADMINISTRADOR: ROLE_SUPER_ADMIN
         ROLE_ROOT: [ROLE_SUPER_ADMIN]
 
     encoders:

@@ -17,9 +17,7 @@ final class VerticalAdmin extends BaseAbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('name', null, ['label' => 'Nombre de vertical'])
             ;
     }
 
@@ -27,24 +25,21 @@ final class VerticalAdmin extends BaseAbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('createdBy')
-            ->add('updatedBy')
-            ->add('updatedAt', 'datetime')
-            ->add('createdAt', 'datetime')
+            ->add('name', null, ['label' => 'Nombre de vertical'])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
+                'label' => 'Accion'
             ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('name')
+            ->add('name', null, ['label' => 'Nombre de vertical'])
             ;
     }
 
@@ -52,7 +47,7 @@ final class VerticalAdmin extends BaseAbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
+            ->add('name', null, ['label' => 'Nombre de vertical'])
             ->add('createdAt')
             ->add('updatedAt')
             ;

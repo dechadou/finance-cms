@@ -17,28 +17,25 @@ final class DocumentoAdmin extends BaseAbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('type')
-            ->add('name')
-            ->add('value', null, ['label' => 'URL'])
-            ->add('createdBy')
-            ->add('updatedBy')
-            ->add('updatedAt', 'datetime')
-            ->add('createdAt', 'datetime')
+            ->add('type', null, ['label' => 'Tipo de documento'])
+            ->add('name', null, ['label' => 'Nombre del documento'])
+            ->add('value', null, ['label' => 'Link al documento'])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
+                'label' => 'Accion'
             ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('type')
-            ->add('name')
-            ->add('value', null, ['label' => 'URL'])
+            ->add('type', null, ['label' => 'Tipo de documento'])
+            ->add('name', null, ['label' => 'Nombre del documento'])
+            ->add('value', null, ['label' => 'Link al documento'])
         ;
     }
 
@@ -46,8 +43,8 @@ final class DocumentoAdmin extends BaseAbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('value')
+            ->add('name', null, ['label' => 'Nombre del documento'])
+            ->add('value', null, ['label' => 'Link al documento'])
             ;
     }
 }

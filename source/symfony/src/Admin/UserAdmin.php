@@ -31,31 +31,30 @@ class UserAdmin extends BaseAbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('username')
-        ;
+            ->addIdentifier('username', null, ['label' => 'Nombre de usuario']);
 
         $securityChecker = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
 
         if ($securityChecker->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $listMapper
                 ->add('email')
-                ->add('roles')
+                ->add('roles', null, ['template' => 'admin/role_list.html.twig'])
                 ->add(
                     'impersonating',
                     'string',
-                    ['template' => 'admin/security/impersonating.html.twig']
+                    ['template' => 'admin/security/impersonating.html.twig', 'label' => 'Loguearse como otro usuario']
                 );
         }
 
-        $listMapper->add('createdAt');
         $listMapper->add(
             '_action',
             'actions',
             [
-                'actions'  => [
-                    'edit'   => ['template' => '@SonataAdmin/CRUD/list__action_edit.html.twig'],
+                'actions' => [
+                    'edit' => ['template' => '@SonataAdmin/CRUD/list__action_edit.html.twig'],
                     'delete' => ['template' => '@SonataAdmin/CRUD/list__action_delete.html.twig']
                 ],
+                'label' => 'Accion',
                 'template' => '@SonataAdmin/CRUD/list__action.html.twig'
             ]
         );
@@ -69,9 +68,17 @@ class UserAdmin extends BaseAbstractAdmin
         $securityChecker = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
         $roles = $this->getConfigurationPool()->getContainer()->getParameter('security.role_hierarchy.roles');
 
+
         $passwordFieldOptions = ['required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))];
         if ((!$this->getSubject() || is_null($this->getSubject()->getId()))) {
             $passwordFieldOptions['constraints'] = new NotBlank();
+        }
+
+        if (!$securityChecker->isGranted('ROLE_ROOT')) {
+            unset($roles['ROLE_USER']);
+            unset($roles['ROLE_ADMIN']);
+            unset($roles['ROLE_ROOT']);
+            unset($roles['ROLE_SUPER_ADMIN']);
         }
 
         $formMapper

@@ -164,7 +164,7 @@ class LoginController extends AbstractController
 
             //$this->mailHelper->sendEmail($token, $email, $request);
 
-            return true;
+            return $token;
         }
     }
 

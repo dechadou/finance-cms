@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class StartupController extends AbstractController
 {
+    const IMG_URL = 'http://phpstack-401769-1264820.cloudwaysapps.com/uploads/';
     public function getDocumentos($startup)
     {
         $documentos = [];
@@ -27,7 +28,9 @@ class StartupController extends AbstractController
                 'id' => $documento->getId(),
                 'type' => $documento->getType()->getName(),
                 'name' => $documento->getName(),
-                'value' => $documento->getValue()
+                'value' => $documento->getValue(),
+                'source' => $documento->getSource(),
+                'date' => $documento->getDate(),
             ];
         }
         return $documentos;
@@ -39,7 +42,8 @@ class StartupController extends AbstractController
         foreach ($startup->getStatus() as $s) {
             $status[] = [
                 'id' => $s->getId(),
-                'text' => $s->getText(),
+                'title' => $s->getTitle(),
+                'status' => $s->getText(),
                 'fecha' => $s->getFecha()
             ];
         }
@@ -50,8 +54,15 @@ class StartupController extends AbstractController
     {
         $basic = $startup->getBasic();
         $inversores = [];
-        foreach ($basic->getInversores() as $inversor) {
-            $inversores[] = $inversor->toArray();
+        foreach ($basic->getInversorStartups() as $inversor) {
+
+            $inversores[] = [
+                'id' => $inversor->getInversor()->getId(),
+                'name' => $inversor->getInversor()->getName(),
+                'porcentaje_participacion' => $inversor->getPorcentajeParticipacion(),
+                'logo' => self::IMG_URL.$inversor->getInversor()->getLogo(),
+                'website' => $inversor->getInversor()->getWebsite()
+            ];
         }
         return [
             'batch' => $basic->getBatch(),
@@ -108,7 +119,7 @@ class StartupController extends AbstractController
             $result[] = [
                 'id' => $startup->getId(),
                 'name' => $startup->getName(),
-                'logo' => $startup->getLogo(),
+                'logo' => self::IMG_URL.$startup->getLogo(),
                 'description' => $startup->getDescription(),
                 'one_pager' => $startup->getOnePager(),
                 'website' => $startup->getWebsite(),

@@ -28,17 +28,17 @@ class Basic
     private $batch;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $total_invertido_gridx;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $invertido_gridx_follow;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $invertido_gridx;
 
@@ -68,14 +68,16 @@ class Basic
     private $registro_acciones_inicial;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inversor")
+     * @ORM\OneToMany(targetEntity="App\Entity\InversorStartup", mappedBy="basic", cascade={"persist"})
      */
-    private $inversores;
+    private $inversorStartups;
+
 
     public function __construct()
     {
-        $this->inversores = new ArrayCollection();
+        $this->inversorStartups = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -191,26 +193,31 @@ class Basic
     }
 
     /**
-     * @return Collection|Inversor[]
+     * @return Collection|InversorStartup[]
      */
-    public function getInversores(): Collection
+    public function getInversorStartups(): Collection
     {
-        return $this->inversores;
+        return $this->inversorStartups;
     }
 
-    public function addInversore(Inversor $inversore): self
+    public function addInversorStartup(InversorStartup $inversorStartup): self
     {
-        if (!$this->inversores->contains($inversore)) {
-            $this->inversores[] = $inversore;
+        if (!$this->inversorStartups->contains($inversorStartup)) {
+            $this->inversorStartups[] = $inversorStartup;
+            $inversorStartup->setBasic($this);
         }
 
         return $this;
     }
 
-    public function removeInversore(Inversor $inversore): self
+    public function removeInversorStartup(InversorStartup $inversorStartup): self
     {
-        if ($this->inversores->contains($inversore)) {
-            $this->inversores->removeElement($inversore);
+        if ($this->inversorStartups->contains($inversorStartup)) {
+            $this->inversorStartups->removeElement($inversorStartup);
+            // set the owning side to null (unless already changed)
+            if ($inversorStartup->getBasic() === $this) {
+                $inversorStartup->setBasic(null);
+            }
         }
 
         return $this;

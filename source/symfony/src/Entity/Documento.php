@@ -37,6 +37,16 @@ class Documento
     private $value;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $source;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Startup", inversedBy="documentos")
      */
     private $startup;
@@ -90,6 +100,30 @@ class Documento
     public function setStartup(?Startup $startup): self
     {
         $this->startup = $startup;
+
+        return $this;
+    }
+
+    public function getSource(): ?string
+    {
+        return $this->source;
+    }
+
+    public function setSource(?string $source): self
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
