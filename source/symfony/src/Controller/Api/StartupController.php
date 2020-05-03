@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class StartupController extends AbstractController
 {
-    const IMG_URL = 'http://phpstack-401769-1264820.cloudwaysapps.com/uploads/';
+    const IMG_URL = 'https://phpstack-401769-1264820.cloudwaysapps.com/uploads/';
 
     public function getImage($object)
     {
