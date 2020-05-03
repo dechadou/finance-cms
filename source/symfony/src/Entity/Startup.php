@@ -51,7 +51,7 @@ class Startup
     private $website;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $fecha_constitucion;
 
