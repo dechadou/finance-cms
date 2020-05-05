@@ -1,8 +1,10 @@
 {% extends get_admin_template('base_list_field', admin.code) %}
 
 
-{% block field%}
+{% block field %}
     <div>
-        {{ object.roles[0] }}
+        {% if object.roles %}
+            {{ object.roles[0] }}
+        {% endif %}
     </div>
 {% endblock %}

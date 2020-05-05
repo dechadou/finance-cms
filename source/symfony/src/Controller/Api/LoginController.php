@@ -162,7 +162,7 @@ class LoginController extends AbstractController
                 throw new UnprocessableEntityHttpException($e->getMessage());
             }
 
-            //$this->mailHelper->sendEmail($token, $email, $request);
+            $this->mailHelper->sendEmail($token, $email, $request);
 
             return $token;
         }

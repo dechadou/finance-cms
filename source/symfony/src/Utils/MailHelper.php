@@ -40,7 +40,7 @@ class MailHelper extends AbstractController
      */
     public function sendEmail($token, $email, Request $request) {
 
-        $site_url = $request->get('url') . $token;
+        $site_url = $this->getParameter('reset_link') . $token;
 
         $from = $this->getParameter('mail_from');
 

@@ -7,8 +7,8 @@ parameters:
     locale: 'es'
     admin_path: 'admin_UV6piOWeU4AidERp'
     jwt_key: '%env(JWT_KEY)%'
-
     mail_from: 'no-reply@elgatoylacaja.com'
+    reset_link: '%env(RESET_PASSWORD_URL)%'
 
 
 
