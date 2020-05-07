@@ -31,7 +31,7 @@ final class InversorStartupAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('inversor')
-            ->add('porcentaje_participacion')
+            ->add('porcentaje_participacion', null, ['required' => false])
             ;
     }
 
