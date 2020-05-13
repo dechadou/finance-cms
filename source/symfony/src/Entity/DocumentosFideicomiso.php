@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use App\Traits\CreatedAndUpdatedAt;
 use App\Traits\CreatedAndUpdatedBy;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\DocumentoRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\DocumentosFideicomisoRepository")
  */
-class Documento
+class DocumentosFideicomiso
 {
     use CreatedAndUpdatedAt;
     use CreatedAndUpdatedBy;
@@ -46,27 +48,9 @@ class Documento
      */
     private $date;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Startup", inversedBy="documentos")
-     */
-    private $startup;
-
-
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getType(): ?Type
-    {
-        return $this->type;
-    }
-
-    public function setType(Type $type): self
-    {
-        $this->type = $type;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -93,18 +77,6 @@ class Documento
         return $this;
     }
 
-    public function getStartup(): ?Startup
-    {
-        return $this->startup;
-    }
-
-    public function setStartup(?Startup $startup): self
-    {
-        $this->startup = $startup;
-
-        return $this;
-    }
-
     public function getSource(): ?string
     {
         return $this->source;
@@ -127,5 +99,22 @@ class Documento
         $this->date = $date;
 
         return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

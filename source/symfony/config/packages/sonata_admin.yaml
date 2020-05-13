@@ -14,6 +14,7 @@ sonata_admin:
                 items:
                     - admin.user
                     - admin.startup
+                    - admin.documentos_fideicomiso
                 roles: [ ROLE_ROOT ]
             admin.group.configuration:
                 label: Configuracion
@@ -92,6 +93,13 @@ services:
         arguments: [~, App\Entity\InversorStartup, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: InversorStartup }
+        public: true
+
+    admin.documentos_fideicomiso:
+        class: App\Admin\DocumentosFideicomisoAdmin
+        arguments: [~, App\Entity\DocumentosFideicomiso, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Documentos Fideicomiso }
         public: true
 
 

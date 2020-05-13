@@ -77,7 +77,7 @@ class StartupController extends AbstractController
         }
         return [
             'batch' => $basic->getBatch(),
-            'total_invertido_gridx' => $basic->getTotalInvertidoGridx(),
+            //'total_invertido_gridx' => $basic->getTotalInvertidoGridx(),
             'invertido_gridx_follow' => $basic->getInvertidoGridxFollow(),
             'invertido_gridx' => $basic->getInvertidoGridx(),
             'empleados' => $basic->getEmpleados(),

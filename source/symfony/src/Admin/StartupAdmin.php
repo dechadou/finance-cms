@@ -43,7 +43,7 @@ final class StartupAdmin extends BaseAbstractAdmin
             ->add('website')
             ->add('fecha_constitucion')
             ->add('cierre_ejercicio')
-            ->add('fondice')
+            ->add('fondice', null, ['label' => 'FONDCE'])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -74,7 +74,7 @@ final class StartupAdmin extends BaseAbstractAdmin
             ->add('website')
             ->add('fecha_constitucion', TextType::class, ['required' => false, 'empty_data' => '', 'attr' => ['placeholder' => 'dd/mm/yyyy', 'style' => 'width:30%']])
             ->add('cierre_ejercicio')
-            ->add('fondice')
+            ->add('fondice', null, ['label' => 'FONDCE'])
             ->end()
             ->end()
             ->tab('Mas informacion')
@@ -105,7 +105,7 @@ final class StartupAdmin extends BaseAbstractAdmin
             ->add('website')
             ->add('fecha_constitucion')
             ->add('cierre_ejercicio')
-            ->add('fondice')
+            ->add('fondice', null, ['label' => 'FONDCE'])
             ->add('createdAt')
             ->add('updatedAt');
     }
