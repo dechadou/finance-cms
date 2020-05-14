@@ -72,6 +72,11 @@ class Basic
      */
     private $inversorStartups;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $inversion_externa;
+
 
     public function __construct()
     {
@@ -219,6 +224,18 @@ class Basic
                 $inversorStartup->setBasic(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getInversionExterna(): ?float
+    {
+        return $this->inversion_externa;
+    }
+
+    public function setInversionExterna(?float $inversion_externa): self
+    {
+        $this->inversion_externa = $inversion_externa;
 
         return $this;
     }

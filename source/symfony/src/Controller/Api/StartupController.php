@@ -80,6 +80,7 @@ class StartupController extends AbstractController
             //'total_invertido_gridx' => $basic->getTotalInvertidoGridx(),
             'invertido_gridx_follow' => $basic->getInvertidoGridxFollow(),
             'invertido_gridx' => $basic->getInvertidoGridx(),
+            'inversion_externa' => $basic->getInversionExterna(),
             'empleados' => $basic->getEmpleados(),
             'estatuto' => $basic->getEstatuto(),
             'reformas_estatuto' => $basic->getReformasEstatuto(),

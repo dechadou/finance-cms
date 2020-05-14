@@ -37,6 +37,7 @@ final class BasicAdmin extends AbstractAdmin
             ->add('total_invertido_gridx')
             ->add('invertido_gridx_follow', null, ['label' => 'Follow on'])
             ->add('invertido_gridx')
+            ->add('inversion_externa', null, ['label' => 'Inversión Externa'])
             ->add('empleados', null, ['label' => 'Cantidad de empleados'])
             ->add('reformas_estatuto', null, ['label' => 'Link a Reformas de Estatuto'])
             ->add('estatuto', null, ['label' => 'Link a estatuto'])
@@ -61,6 +62,7 @@ final class BasicAdmin extends AbstractAdmin
             ->add('inversorStartups', \Sonata\Form\Type\CollectionType::class, ['by_reference' => true, 'label' => 'Inversores', 'required' => false], ['edit' => 'inline', 'inline' => 'table', 'allow_delete' => true])
             ->add('invertido_gridx')
             ->add('invertido_gridx_follow', null, ['label' => 'Follow on'])
+            ->add('inversion_externa', null, ['label' => 'Inversión Externa'])
             ->add('estatuto', null, ['label' => 'Link a estatuto'])
             ->add('reformas_estatuto', null, ['label' => 'Link a Reformas de Estatuto'])
             ->add('registro_acciones_inicial', null, ['label' => 'Link a Registro de Acciones Inicial']);
@@ -74,6 +76,7 @@ final class BasicAdmin extends AbstractAdmin
             ->add('total_invertido_gridx')
             ->add('invertido_gridx_follow', null, ['label' => 'Follow on'])
             ->add('invertido_gridx')
+            ->add('inversion_externa', null, ['label' => 'Inversión Externa'])
             ->add('empleados', null, ['label' => 'Cantidad de empleados'])
             ->add('reformas_estatuto', null, ['label' => 'Link a Reformas de Estatuto'])
             ->add('estatuto', null, ['label' => 'Link a estatuto'])
