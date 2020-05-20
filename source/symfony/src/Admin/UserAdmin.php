@@ -92,7 +92,7 @@ class UserAdmin extends BaseAbstractAdmin
             )
             ->end();
 
-        if ($securityChecker->isGranted('ROLE_ROOT')) {
+        if ($securityChecker->isGranted('ROLE_ROOT') || $securityChecker->isGranted('ADMINISTRADOR')) {
             $formMapper
                 ->with('Roles')
                 ->add(
