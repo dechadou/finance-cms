@@ -4,6 +4,9 @@
 {% block field %}
     <div>
         {% if object.roles %}
+        {% if object.roles[0] === 'ROLE_ROOT' %}
+
+        {% else %}
             {{ object.roles[0] }}
         {% endif %}
     </div>
