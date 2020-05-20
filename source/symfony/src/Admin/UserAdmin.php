@@ -92,22 +92,21 @@ class UserAdmin extends BaseAbstractAdmin
             )
             ->end();
 
-        if ($securityChecker->isGranted('ROLE_ROOT') || $securityChecker->isGranted('ADMINISTRADOR')) {
-            $formMapper
-                ->with('Roles')
-                ->add(
-                    'roles',
-                    ChoiceType::class,
-                    [
-                        'label' => false,
-                        'expanded' => true,
-                        'multiple' => true,
-                        'required' => true,
-                        'choices' => array_combine(array_keys($roles), array_keys($roles))
-                    ]
-                )
-                ->end();
-        }
+
+        $formMapper
+            ->with('Roles')
+            ->add(
+                'roles',
+                ChoiceType::class,
+                [
+                    'label' => false,
+                    'expanded' => true,
+                    'multiple' => true,
+                    'required' => true,
+                    'choices' => array_combine(array_keys($roles), array_keys($roles))
+                ]
+            )
+            ->end();
 
 
     }
