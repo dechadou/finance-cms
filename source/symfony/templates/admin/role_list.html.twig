@@ -4,10 +4,11 @@
 {% block field %}
     <div>
         {% if object.roles %}
-        {% if object.roles[0] === 'ROLE_ROOT' %}
+            {% if object.roles[0] is same as('ROLE_ROOT') %}
 
-        {% else %}
-            {{ object.roles[0] }}
+            {% else %}
+                {{ object.roles[0] }}
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
