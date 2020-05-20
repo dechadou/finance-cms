@@ -102,7 +102,7 @@ class UserAdmin extends BaseAbstractAdmin
                         'label' => false,
                         'expanded' => true,
                         'multiple' => true,
-                        'required' => false,
+                        'required' => true,
                         'choices' => array_combine(array_keys($roles), array_keys($roles))
                     ]
                 )
