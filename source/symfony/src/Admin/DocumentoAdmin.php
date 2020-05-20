@@ -37,7 +37,8 @@ final class DocumentoAdmin extends BaseAbstractAdmin
             ->add('type', null, ['label' => 'Tipo de documento'])
             ->add('name', null, ['label' => 'Nombre del documento'])
             ->add('source', null, ['label' => 'Fuente'])
-            ->add('date', DateTimePickerType::class, ['label' => 'Fecha de publicacion', 'required' => false])
+            ->add('date', DateTimePickerType::class, ['label' => 'Fecha de publicacion', 'required' => false, 'format' => 'YYYY-MM-DD',
+                'dp_language' => 'en'])
             ->add('value', null, ['label' => 'Link al documento']);
     }
 
@@ -48,4 +49,5 @@ final class DocumentoAdmin extends BaseAbstractAdmin
             ->add('name', null, ['label' => 'Nombre del documento'])
             ->add('value', null, ['label' => 'Link al documento']);
     }
+
 }
